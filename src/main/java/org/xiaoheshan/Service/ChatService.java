@@ -1,16 +1,13 @@
 package org.xiaoheshan.Service;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import org.xiaoheshan.pojo.ResEntity;
 
-@Path("/chat")
+@Path("/sendMessage")
 public interface ChatService {
     @GET
     @Path("/{message}")
     @Produces("application/json")
-    ResEntity chat(@PathParam("message") String message);
+    ResEntity sendMessage(@PathParam("message") String message);
 
 }

@@ -1,4 +1,4 @@
-package org.xiaoheshan;
+package org.xiaoheshan.util;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
@@ -10,6 +10,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.xiaoheshan.BootStrap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +37,7 @@ public class Message {
             // 设置请求头
             httpPost.setHeader("Content-Type", "application/json");
             httpPost.setHeader("Authorization", "Bearer sk-nfAyWQrh1rj85KbG9854918e4b3945F4A8D5BeAf2746BfBc");
+            httpPost.setHeader("Accept-Language", "zh-CN,en-US;q=0.7,en;q=0.3");
 
             // 创建一个消息列表
             List<Map<String, String>> messages = new ArrayList<>();

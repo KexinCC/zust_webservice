@@ -9,6 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * BootStrap
+ * <p>
+ *     BootStrap is a singleton class, which is used to configure and start the RESTful and SOAP service.
+ * </p>
+ */
 public class BootStrap {
     private static volatile BootStrap instance;
     private static final List<JAXRSServerFactoryBean> rsList = new ArrayList<>();
