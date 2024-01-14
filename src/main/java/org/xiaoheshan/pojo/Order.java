@@ -1,4 +1,5 @@
-package org.xiaoheshan;
+package org.xiaoheshan.pojo;
+
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 
