@@ -9,6 +9,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.xiaoheshan.pojo.ResEntity;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -16,7 +17,7 @@ import java.io.UnsupportedEncodingException;
 
 @Slf4j
 public class OpenAIAPI {
-    public static String invokeApi(String message) {
+    public static ResEntity invokeApi(String message) {
 
         String res = null;
         String content = null;
@@ -38,7 +39,7 @@ public class OpenAIAPI {
         } catch (IOException e) {
             log.error("invoke api error", e);
         }
-        return content;
+        return new ResEntity(200, content);
     }
 
     private static HttpPost getHttpPost(String message) throws UnsupportedEncodingException {
