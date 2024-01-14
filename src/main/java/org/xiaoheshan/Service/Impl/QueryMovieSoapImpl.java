@@ -5,25 +5,21 @@ import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import org.xiaoheshan.Service.QueryMovie;
+import jakarta.jws.WebService;
+import org.xiaoheshan.Service.QueryMovieSoap;
 import org.xiaoheshan.pojo.Movie;
-import org.xiaoheshan.pojo.ReqEntity;
 
 import java.util.Date;
 import java.util.List;
 
-public class QueryMovieImpl implements QueryMovie {
-
-    /**
-     * query movie by movie name
-     *
-     * @param reqEntity the request entity
-     * @return the movie
-     */
+/**
+ * The type Query movie soap.
+ */
+@WebService(endpointInterface = "org.xiaoheshan.Service.QueryMovieSoap",
+        serviceName = "QueryMovieSoap")
+public class QueryMovieSoapImpl implements QueryMovieSoap {
     @Override
-    public Movie queryMovie(ReqEntity reqEntity) {
-        String movieName = reqEntity.getMsg();
-
+    public Movie queryMovie(String movieName) {
         // correct the movie name
         String s = HttpUtil.get(STR."http://localhost:8080/chatservice/sendMessage/返回这个电影正确的名字: \{movieName}, 并用 | 包裹");
         movieName = s.split("\\|")[1].trim();
@@ -61,6 +57,7 @@ public class QueryMovieImpl implements QueryMovie {
                 date,
                 description,
                 posterUri);
+
     }
 
 }

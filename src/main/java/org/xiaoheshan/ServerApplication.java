@@ -1,11 +1,7 @@
 package org.xiaoheshan;
 
 
-import org.xiaoheshan.Service.CorrectMovieNameService;
-import org.xiaoheshan.Service.Impl.ChatServiceImpl;
-import org.xiaoheshan.Service.Impl.ChatSoapImpl;
-import org.xiaoheshan.Service.Impl.CorrectMovieNameServiceImpl;
-import org.xiaoheshan.Service.Impl.QueryMovieImpl;
+import org.xiaoheshan.Service.Impl.*;
 
 public class ServerApplication {
 
@@ -20,6 +16,7 @@ public class ServerApplication {
                 .configWs(ChatSoapImpl.class, "chatsoap")
                 .configRs(CorrectMovieNameServiceImpl.class, "correctmoviename")
                 .configRs(QueryMovieImpl.class, "querymovies")
+                .configWs(QueryMovieSoapImpl.class, "querymoviesoap")
                 .start();
 
 
