@@ -15,19 +15,22 @@ import java.util.List;
 public class QueryMovieImpl implements QueryMovie {
 
     /**
-     * @param
+     * query movie by movie name
+     * @param reqEntity
      * @return
      */
     @Override
     public Movie queryMovie(ReqEntity reqEntity) {
         String movieName = reqEntity.getMsg();
 
+        // correct the movie name
         String s = HttpUtil.get(STR."http://localhost:8080/chatservice/sendMessage/返回这个电影正确的名字: \{movieName}, 并用 | 包裹");
         movieName = s.split("\\|")[1].trim();
 
+        // query movie by movie name
         String res = HttpUtil.get(STR."https://api.wmdb.tv/api/v1/movie/search?q=\{movieName}");
 
-
+        // filter the movie by movie name
         String finalMovieName = movieName;
         List<Object> list = JSONArray.parse(res).stream().filter(o -> {
             JSONArray data = ((JSONObject) o).getJSONArray("data");
@@ -40,7 +43,7 @@ public class QueryMovieImpl implements QueryMovie {
         JSONArray dataArray = o.getJSONArray("data");
         JSONObject data = dataArray.getJSONObject(0);
 
-
+        // get the movie info
         String originalName = o.getString("originalName");
         String posterUri = data.getString("poster");
         String description = data.getString("description");
@@ -49,6 +52,7 @@ public class QueryMovieImpl implements QueryMovie {
         String imdbRating = o.getString("imdbRating");
 
 
+        // return the movie
         return new Movie(originalName, posterUri, doubanRating, date, description, imdbRating);
     }
 

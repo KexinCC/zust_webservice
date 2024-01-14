@@ -7,6 +7,14 @@ import java.util.Date;
 
 @XmlRootElement(name = "Movie")
 public class Movie {
+    /**
+     * originalName: 原名
+     * imdbRating: IMDB评分
+     * doubanRating: 豆瓣评分
+     * date: 上映日期
+     * description: 描述
+     * posterUri: 海报地址
+     */
     private String originalName;
     private String imdbRating;
     private String doubanRating;

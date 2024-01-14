@@ -20,6 +20,12 @@ import java.util.List;
 import java.util.Map;
 
 
+/**
+ * OpenAIAPI
+ * <p>
+ *     OpenAIAPI is a singleton class, which is used to invoke the OpenAI API.
+ * </p>
+ */
 @Slf4j
 public class OpenAIAPI {
     public static ResEntity invokeApi(String message) {
